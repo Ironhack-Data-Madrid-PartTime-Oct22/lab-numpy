@@ -1,80 +1,66 @@
 #1. Import the NUMPY package under the name np.
 import numpy as np
 
-
 #2. Print the NUMPY version and the configuration.
 print(np.__version__)
-
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 ## otros métodos para hacer arrays aleatorios son np.random.radint(x, y(2,3,5)) --> necesita además números para el rango, y puebla la matriz con ese rango
 ##np.random.random_sample((2,3,5)) --> genera números aleatorios del 0 al 1, sin incluirlo
 ##np.random.rand((2,3,5)) --> genera números aleatorios entre el 0 y el 1 incluyéndolos
-
 a = np.random.rand(2,3,5)
 
 #4. Print a.
 print(a)
 
-
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 b = np.ones((5,2,3))
 
-
 #6. Print b.
 print(b)
-
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 ## para comprobar el size, se usa el método size. en este caso, son del mismo "size", pero 👁️👁️ no tienen la misma dimensión
 print("tienen a y b el mismo size?", a.size == b.size)
 print("tienen a y b el mismo shape?", a.shape == b.shape)
 
-
 #8. Are you able to add a and b? Why or why not?
 ## no es posible sumar los dos arrays porque dimensiones distintas
 try: 
-    np.sum(a,b)
+    np.add(a,b)
 except:
     print('👁️👁️, no se puede hacer la suma porque los arrays no tienen el mismo shape')
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 c = np.transpose(b, (1,2,0))
-print(c, c.shape)
+print(c, c.shape, a.shape)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 ## ahora se pueden sumar los odos arrays porque tienen la misma dimensión y la misma estructura (mismo shape)
-
-try: 
-    d = np.sum(a,c)
-except:
-    print('👁️👁️, no se puede hacer la suma porque los arrays no tienen el mismo shape')
-
+d = np.add(a, c)
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-print(a, d)
-
+## el array d es el resultado de sumar (la matriz b) uno a cada los miembros de cada uno de los miembros
+print(a, "\n->\n" , d)
 
 #12. Multiply a and c. Assign the result to e.
-
-
+e = np.multiply(a,c)
 
 #13. Does e equal to a? Why or why not?
-
-
-
+## son iguales porque se multiplica la matriz a por una matriz de números 1
+print(a, "\n->\n" , e)
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
-
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+print(f"valor máx de d: {d_max}, valor mín de d: {d_min}, valor medio de d: {d_mean}")
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
-
+f = np.empty((2,3,5), dtype=str)
+print(f)
 
 
 """
