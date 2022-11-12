@@ -46,6 +46,7 @@ c = np.transpose(b,(1, 2, 0))
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
 d = a1 + c
+# c = np.add(a1, b) Usando numpy
 print (d)
 # Ahora sí podemos, porque tienen la misma forma.
 print (a1.shape,c.shape)
@@ -63,21 +64,29 @@ así que el array resultante, d, es el mismo que a1 pero con todos los valores a
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e = a1 * c
+# e = np.multiply(a1, c) Usando numpy
+print (e)
 
 #13. Does e equal to a? Why or why not?
 
-
-
+print (e == a1)
+"""
+Sí, porque aunque estemos multiplicando cada valor de un array con el valor del mismo objeto en la misma posición de otro array
+resulta que el array c está solo compuesto por unos, y en una multiplicación por uno, el resultado siempre es sí mismo
+porque... bueno... te lo imaginas... 🤡🤡🤡
+"""
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
-
-
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+print (d_max, d_min, d_mean)
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
+f = np.empty((2, 3, 5))
 
 
 """
@@ -89,7 +98,21 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-
+# No soy fan de los "X", "y", "z", pero en arrays me es más fácil así porque me recuerda a las gráficas e mates
+for z in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for x in range(d.shape[2]):
+                        if (d[z, y, x] > d_min) & (d[z, y, x] < d_mean):
+                                f[z, y, x] = 25
+                        elif (d[z, y, x] > d_mean) & (d[z, y, x] < d_max):
+                                f[z, y, x] = 75
+                        elif d[z, y, x] == d_mean:
+                                f[z, y, x] = 50
+                        elif d[z, y, x] == d_min:
+                                f[z, y, x] = 0
+                        elif d[z, y, x] == d_max:
+                                f[z, y, x] = 100
+print (f)
 
 
 
@@ -113,7 +136,9 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print (d)
+print (f)
+# Está guay, ha salido como debería
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -127,3 +152,22 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+# Me voy a crear otro array y esas cosas para no solapar la F
+
+g = np.empty((2, 3, 5), dtype = str)
+
+for z in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for x in range(d.shape[2]):
+                        if (d[z, y, x] > d_min) & (d[z, y, x] < d_mean):
+                                g[z, y, x] = "B"
+                        elif (d[z, y, x] > d_mean) & (d[z, y, x] < d_max):
+                                g[z, y, x] = "D"
+                        elif d[z, y, x] == d_mean:
+                                g[z, y, x] = "C"
+                        elif d[z, y, x] == d_min:
+                                g[z, y, x] = "A"
+                        elif d[z, y, x] == d_max:
+                                g[z, y, x] = "E"
+
+print (g)
