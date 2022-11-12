@@ -137,7 +137,7 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
-e = np.empty((2,3,5))
+e = np.empty((2,3,5),dtype=str)
 
 for tercera_dimension in range(d.shape[0]):
         for lineas in range(d.shape[1]):
@@ -156,3 +156,4 @@ for tercera_dimension in range(d.shape[0]):
                                 
                         elif d[tercera_dimension][lineas][columnas] == d_max:
                                 e[tercera_dimension][lineas][columnas] = "E"
+print(e)
