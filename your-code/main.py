@@ -26,44 +26,53 @@ b = np.ones((5,2,3))
 print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
-a == b
+if a.size == b.size:
+        print(True)
+else:
+        print(False)
 
 #8. Are you able to add a and b? Why or why not?
 
-
+#No se puede ya que las filas y columnas no coinciden.
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = np.transpose(b,(1,2,0))
+print(c)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = a + c
+print(d)
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
-
+print(a)
+print(d)
+#ahora la diferencia entre a y d es equivalente al valor de c
+#c == a - d
 
 #12. Multiply a and c. Assign the result to e.
 
-
-
+e = a*c
+print(e)
 #13. Does e equal to a? Why or why not?
 
-
+print(np.all(e == a))
+#Si, es igual la array e y la a. Es igual porque todo el array de c son 1, asi que si multiplicamos todos los valores de a por los de c sale el mismo numero.
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
+d_max = np.max(d)
 
+d_min = np.min(d)
+
+d_mean = np.mean(d)
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
-
+f = np.empty((2,3,5))
 
 """
 #16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
@@ -74,10 +83,25 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+for tercera_dimension in range(d.shape[0]):
+        for lineas in range(d.shape[1]):
+                for columnas in range(d.shape[2]):
+                        if (d[tercera_dimension][lineas][columnas] > d_min) & (d[tercera_dimension][lineas][columnas] < d_mean):
+                                f[tercera_dimension][lineas][columnas] = 25
+                        
+                        elif (d[tercera_dimension][lineas][columnas] > d_mean) & (d[tercera_dimension][lineas][columnas] < d_max):
+                                f[tercera_dimension][lineas][columnas] = 70
 
-
-
-
+                        elif d[tercera_dimension][lineas][columnas] == d_mean:
+                                f[tercera_dimension][lineas][columnas] = 50
+                                
+                        elif d[tercera_dimension][lineas][columnas] == d_min:
+                                f[tercera_dimension][lineas][columnas] = 0
+                                
+                        elif d[tercera_dimension][lineas][columnas] == d_max:
+                                f[tercera_dimension][lineas][columnas] = 100
+                                
+print(f)
 """
 #17. Print d and f. Do you have your expected f?
 For instance, if your d is:
@@ -98,7 +122,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d)
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -112,3 +137,22 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+e = np.empty((2,3,5))
+
+for tercera_dimension in range(d.shape[0]):
+        for lineas in range(d.shape[1]):
+                for columnas in range(d.shape[2]):
+                        if (d[tercera_dimension][lineas][columnas] > d_min) & (d[tercera_dimension][lineas][columnas] < d_mean):
+                                e[tercera_dimension][lineas][columnas] = "B"
+                        
+                        elif (d[tercera_dimension][lineas][columnas] > d_mean) & (d[tercera_dimension][lineas][columnas] < d_max):
+                                e[tercera_dimension][lineas][columnas] = "D"
+
+                        elif d[tercera_dimension][lineas][columnas] == d_mean:
+                                e[tercera_dimension][lineas][columnas] = "C"
+                                
+                        elif d[tercera_dimension][lineas][columnas] == d_min:
+                                e[tercera_dimension][lineas][columnas] = "A"
+                                
+                        elif d[tercera_dimension][lineas][columnas] == d_max:
+                                e[tercera_dimension][lineas][columnas] = "E"
