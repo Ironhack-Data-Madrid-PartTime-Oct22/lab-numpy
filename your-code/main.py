@@ -8,7 +8,6 @@ print(np.__version__)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
 ## otros métodos para hacer arrays aleatorios son np.random.radint(x, y(2,3,5)) --> necesita además números para el rango, y puebla la matriz con ese rango
 ##np.random.random_sample((2,3,5)) --> genera números aleatorios del 0 al 1, sin incluirlo
 ##np.random.rand((2,3,5)) --> genera números aleatorios entre el 0 y el 1 incluyéndolos
@@ -29,25 +28,34 @@ print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
-
+## para comprobar el size, se usa el método size. en este caso, son del mismo "size", pero 👁️👁️ no tienen la misma dimensión
+print("tienen a y b el mismo size?", a.size == b.size)
+print("tienen a y b el mismo shape?", a.shape == b.shape)
 
 
 #8. Are you able to add a and b? Why or why not?
-
-
+## no es posible sumar los dos arrays porque dimensiones distintas
+try: 
+    np.sum(a,b)
+except:
+    print('👁️👁️, no se puede hacer la suma porque los arrays no tienen el mismo shape')
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
-
+c = np.transpose(b, (1,2,0))
+print(c, c.shape)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+## ahora se pueden sumar los odos arrays porque tienen la misma dimensión y la misma estructura (mismo shape)
 
+try: 
+    d = np.sum(a,c)
+except:
+    print('👁️👁️, no se puede hacer la suma porque los arrays no tienen el mismo shape')
 
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-
+print(a, d)
 
 
 #12. Multiply a and c. Assign the result to e.
