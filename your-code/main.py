@@ -1,49 +1,64 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
-
+print(np.version.version)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
+a1 = np.random.randint(0, 100, (2, 3, 5))
 
+a2 = np.random.rand(2, 3, 5)
+
+a3 = np.random.random_sample((2, 3, 5))
 
 #4. Print a.
 
-
+print (a1)
+print (a2)
+print (a3)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
-
+b = np.ones((5, 2, 3))
 
 #6. Print b.
 
-
+print (b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
-
-
+print (a1.size == b.size)
 
 #8. Are you able to add a and b? Why or why not?
 
-
+# No, porque no tienen la misma forma
+print (a1.shape, b.shape)
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = np.transpose(b,(1, 2, 0))
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = a1 + c
+print (d)
+# Ahora sí podemos, porque tienen la misma forma.
+print (a1.shape,c.shape)
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-
+print (a1)
+print (d) 
+"""
+La diferencia es simplemente que al array a1 le hemos sumado el array c, que está compuesta solo por unos,
+así que el array resultante, d, es el mismo que a1 pero con todos los valores aumentados en uno...
+(Por favor, no más de este tipo de pregunta que es como preguntar "¿Por qué te da 2 de la suma de 1 más 1?"😥😥😥)
+"""
 
 
 #12. Multiply a and c. Assign the result to e.
