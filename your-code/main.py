@@ -59,7 +59,7 @@ d_mean = np.mean(d)
 print(f"valor máx de d: {d_max}, valor mín de d: {d_min}, valor medio de d: {d_mean}")
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-f = np.empty((2,3,5), dtype=str)
+f = np.empty((2,3,5), dtype=int)
 print(f)
 
 
@@ -72,7 +72,19 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-
+for x in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for z in range(d.shape[2]):
+                        if d[x,y,z] > d_min and d[x,y,z] < d_mean:
+                                f[x,y,z] = 25
+                        elif d[x,y,z] > d_mean and d[x,y,z] < d_max:
+                                f[x,y,z] = 75
+                        elif d[x,y,z] == d_mean:
+                                f[x,y,z] = 50
+                        elif d[x,y,z] == d_min:
+                                f[x,y,z] = 0
+                        elif d[x,y,z] == d_max:
+                                f[x,y,z] = 100
 
 
 
@@ -96,7 +108,7 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -110,3 +122,20 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+g = np.empty((2,3,5), dtype=str)
+
+for x in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for z in range(d.shape[2]):
+                        if d[x,y,z] > d_min and d[x,y,z] < d_mean:
+                                g[x,y,z] = 'B'
+                        elif d[x,y,z] > d_mean and d[x,y,z] < d_max:
+                                g[x,y,z] = 'D'
+                        elif d[x,y,z] == d_mean:
+                                g[x,y,z] = 'C'
+                        elif d[x,y,z] == d_min:
+                                g[x,y,z] = 'A'
+                        elif d[x,y,z] == d_max:
+                                g[x,y,z] = 'E'
+
+print(g)
