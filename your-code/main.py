@@ -82,7 +82,7 @@ d_mean = np.mean(d)
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-f = np.empty((2,3,5),dtype= str)
+f = np.empty((2,3,5),dtype= float)
 
 
 """
@@ -95,7 +95,12 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
-
+f[(d < d_mean) & (d > d_min)] = 25
+f[d == d_mean] = 50
+f[(d> d_mean) & (d < d_max)] = 75
+f[d == d_min] = 0
+f[d == d_max] = 100
+d_max,d_mean,d_min
 
 
 """
@@ -118,6 +123,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+
+print(d, f)
 
 
 """
