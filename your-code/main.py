@@ -112,3 +112,74 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+#1
+
+import numpy as np
+#2
+
+print(np.version.version)
+
+#3
+#4
+
+a = np.random.randint(1,50, (2,3,5))
+a
+
+#5
+#6
+
+b = np.ones((5,2,3), dtype= int)
+b
+
+#7
+
+if a.size == b.size:
+    print(f"True the size of a is {a.size} and for b is {b.size}")
+
+#8 No se pueden juntar porque tienen diferentes configuraciones de lineas y columnas
+
+np.add(a,b)
+
+#9 
+
+c = np.transpose(b,(1,2,0))
+c
+
+#10, ahora funciona porque tienen la misma disposición de filas y columnas
+
+d = np.add(a,c)
+d
+
+#11 La diferencia es que la a es la original y la d se le ha sumado los valores de la b, que son todo 1, por lo tanto la diferencia
+# está en que d es a +1
+
+print(a), print(d)
+
+#12
+#13 El resultado es el mismo ya que al multiplicar cualquier valor por 1, el resultado es el mismo, por lo tanto a = c
+
+e = np.multiply(a,c)
+e
+
+#14
+
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+d_max, d_min, d_mean
+
+#15
+
+f = np.empty((2,3,5), dtype = int)
+f
+
+#16 
+#if it's larger than d_min but smaller than d_mean, assign 25 
+for i in d[0]:
+    for z in d[1]:
+
+"""No me deja usar estas dos condiciones con el and como una única condición, me pone Use a.any() or a.all()"""
+        
+        if z > d_min and i < d_mean: 
+        f = 25
+        
