@@ -1,57 +1,75 @@
 #1. Import the NUMPY package under the name np.
+import numpy as np
+
 
 
 
 #2. Print the NUMPY version and the configuration.
 
+print(np.version.version)
+#1.23.4
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
+a = np.random.randit(0,100,(2,3,5))
 
+"""1- convirtiendo una lista.random en array np.array(lista)
+   2- usan np.arange() creo que solo puede ser unidimensional.
+   3-np.eye
+   4-np.random.randit
+   5-np.random.random_sample
+   """
 
 
 #4. Print a.
 
-
+print(a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
-
+b = np.ones((5,2,3))
 
 #6. Print b.
 
-
+print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
 
-
+print(a.size == b.size)
 
 #8. Are you able to add a and b? Why or why not?
 
-
+"""No se puede.
+   Aunque tengan el mismo tamaño no tienen la misma forma.
+   Es mandatorio que tengan la misma forma"""
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = b.reshape(2,3,5)
+c
+"""Aqui haciendo c = np.transpose(b,(2,3,5)) me daba error IDKW"""
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = a + c
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
+print(a, d)
+"""Lo que ha pasado es que a la matriz "a" se le ha sumado 1 
+a todos sus elementos, ya que "d" tenia asignado 1 a todos sus valores."""
 
 
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e =a * c 
 
 #13. Does e equal to a? Why or why not?
-
+a == e 
+"""si ,porque estamos muiltiplicando por 1, los valores no camabian"""
 
 
 
