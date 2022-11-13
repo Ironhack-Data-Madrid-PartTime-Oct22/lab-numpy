@@ -173,13 +173,39 @@ d_max, d_min, d_mean
 f = np.empty((2,3,5), dtype = int)
 f
 
-#16 
-#if it's larger than d_min but smaller than d_mean, assign 25 
-for i in d[0]:
-    for z in d[1]:
+#16 Me ha costado llegar a que tenía que hacer un triple for para llamar a los valores dentro del array
+#17
 
-"""No me deja usar estas dos condiciones con el and como una única condición, me pone Use a.any() or a.all()"""
-        
-        if z > d_min and i < d_mean: 
-        f = 25
-        
+for x in d.shape[0]:
+    for y in d.shape[1]:
+        for z in d.shape[2]:    
+                if d[x,y,z] > d_min and d[x,y,z] < d_mean: 
+                        f[x,y,z] = 25
+                elif d[x,y,z] > d_min and d[x,y,z] < d_max:
+                        f[x,y,z] = 75
+                elif d[x,y,z] == d_mean:
+                        f[x,y,z] = 50
+                elif d[x,y,z] == d_min:
+                        f[x,y,z] = 0
+                elif d[x,y,z] == d_max:
+                        f[x,y,z] = 100
+print(d), print(f)
+
+#18 
+
+g = np.empty((2,3,5), dtype = str)
+
+for x in d.shape[0]:
+    for y in d.shape[1]:
+        for z in d.shape[2]:    
+                if d[x,y,z] > d_min and d[x,y,z] < d_mean: 
+                        f[x,y,z] = B
+                elif d[x,y,z] > d_min and d[x,y,z] < d_max:
+                        f[x,y,z] = D
+                elif d[x,y,z] == d_mean:
+                        f[x,y,z] = C
+                elif d[x,y,z] == d_min:
+                        f[x,y,z] = A
+                elif d[x,y,z] == d_max:
+                        f[x,y,z] = E
+print(g)
