@@ -39,34 +39,38 @@ else:
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
 c=np.transpose(b,(1,2,0))
-print(c)
+print(f" c is : \n {c}")
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d= a+c
+print(d)
+'''we can add a and b because both have the same shape now'''
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
+print(f" a is:\n  {a} \n and d is \n {d}")
 
-
+'''a is a random array and d is the same array added 1 '''
 
 #12. Multiply a and c. Assign the result to e.
 
-
-
+e= a*c
+print(f" e is : \n {e}")
 #13. Does e equal to a? Why or why not?
 
-
+'''they are the same because we are multiplying the array with 1 numbers of the a array, that is by the property of identity, every number multiplied by 1 is the same'''
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
+d_max= np.max(d)
+d_min= np.min(d)
+d_mean= np.mean(d)
 
-
+print(f"the maximun number of d array is {d_max}, the minimun is {d_min} and the mean is {d_mean}")
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
-
 
 
 """
